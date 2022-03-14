@@ -16,6 +16,9 @@
 		1F6C9F8027DEFCFA00BCB048 /* AlboMapLocationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C9F7F27DEFCFA00BCB048 /* AlboMapLocationUITests.swift */; };
 		1F6C9F8227DEFCFA00BCB048 /* AlboMapLocationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C9F8127DEFCFA00BCB048 /* AlboMapLocationUITestsLaunchTests.swift */; };
 		1F6C9F9627DF00DF00BCB048 /* SearchLocationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C9F9527DF00DF00BCB048 /* SearchLocationsVC.swift */; };
+		1F6C9F9827DF01DC00BCB048 /* SearchLocationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C9F9727DF01DC00BCB048 /* SearchLocationVM.swift */; };
+		1F6C9F9A27DF02D300BCB048 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C9F9927DF02D300BCB048 /* Constants.swift */; };
+		1F6C9F9C27DF033500BCB048 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C9F9B27DF033500BCB048 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		1F6C9F7F27DEFCFA00BCB048 /* AlboMapLocationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlboMapLocationUITests.swift; sourceTree = "<group>"; };
 		1F6C9F8127DEFCFA00BCB048 /* AlboMapLocationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlboMapLocationUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1F6C9F9527DF00DF00BCB048 /* SearchLocationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationsVC.swift; sourceTree = "<group>"; };
+		1F6C9F9727DF01DC00BCB048 /* SearchLocationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationVM.swift; sourceTree = "<group>"; };
+		1F6C9F9927DF02D300BCB048 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1F6C9F9B27DF033500BCB048 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				1F6C9F9527DF00DF00BCB048 /* SearchLocationsVC.swift */,
+				1F6C9F9727DF01DC00BCB048 /* SearchLocationVM.swift */,
 			);
 			path = "Search Module";
 			sourceTree = "<group>";
@@ -172,6 +179,8 @@
 		1F6C9F9327DF009400BCB048 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1F6C9F9927DF02D300BCB048 /* Constants.swift */,
+				1F6C9F9B27DF033500BCB048 /* Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -314,9 +323,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F6C9F9A27DF02D300BCB048 /* Constants.swift in Sources */,
+				1F6C9F9C27DF033500BCB048 /* Extensions.swift in Sources */,
 				1F6C9F5F27DEFCF900BCB048 /* AppDelegate.swift in Sources */,
 				1F6C9F6127DEFCF900BCB048 /* SceneDelegate.swift in Sources */,
 				1F6C9F9627DF00DF00BCB048 /* SearchLocationsVC.swift in Sources */,
+				1F6C9F9827DF01DC00BCB048 /* SearchLocationVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
