@@ -19,6 +19,7 @@
 		1F6C9F9827DF01DC00BCB048 /* SearchLocationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C9F9727DF01DC00BCB048 /* SearchLocationVM.swift */; };
 		1F6C9F9A27DF02D300BCB048 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C9F9927DF02D300BCB048 /* Constants.swift */; };
 		1F6C9F9C27DF033500BCB048 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C9F9B27DF033500BCB048 /* Extensions.swift */; };
+		1FC462F027DFCB4F0038378A /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC462EF27DFCB4F0038378A /* MapVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		1F6C9F9727DF01DC00BCB048 /* SearchLocationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationVM.swift; sourceTree = "<group>"; };
 		1F6C9F9927DF02D300BCB048 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1F6C9F9B27DF033500BCB048 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1FC462EF27DFCB4F0038378A /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 		1F6C9F8F27DEFFA900BCB048 /* Map Module */ = {
 			isa = PBXGroup;
 			children = (
+				1FC462EF27DFCB4F0038378A /* MapVC.swift */,
 			);
 			path = "Map Module";
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				1F6C9F9C27DF033500BCB048 /* Extensions.swift in Sources */,
 				1F6C9F5F27DEFCF900BCB048 /* AppDelegate.swift in Sources */,
 				1F6C9F6127DEFCF900BCB048 /* SceneDelegate.swift in Sources */,
+				1FC462F027DFCB4F0038378A /* MapVC.swift in Sources */,
 				1F6C9F9627DF00DF00BCB048 /* SearchLocationsVC.swift in Sources */,
 				1F6C9F9827DF01DC00BCB048 /* SearchLocationVM.swift in Sources */,
 			);
