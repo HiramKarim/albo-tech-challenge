@@ -6,22 +6,25 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class SearchLocationsVC: UIViewController {
     
-    let titleText: UILabel = {
+    private let locationManager = CLLocationManager()
+    
+    private let titleText: UILabel = {
         return UILabel.makeLabel(for: .title, withText: "AIRPORT", withTextColor: .white, andTextsize: 50)
     }()
     
-    let subTitleText: UILabel = {
+    private let subTitleText: UILabel = {
         return UILabel.makeLabel(for: .title, withText: "finder", withTextColor: .white, andTextsize: 30)
     }()
     
-    let kmRadiusText:UILabel = {
+    private let kmRadiusText:UILabel = {
         return UILabel.makeLabel(for: .title, withText: "0km", withTextColor: .darkGray, andTextsize: 50)
     }()
     
-    let searchButton:UIButton = {
+    private let searchButton:UIButton = {
         let button = UIButton()
         button.setTitle("SEARCH", for: .normal)
         button.layer.cornerRadius = 5
@@ -30,7 +33,7 @@ final class SearchLocationsVC: UIViewController {
         return button
     }()
     
-    let slider:UISlider = {
+    private let slider:UISlider = {
         let slider = UISlider()
         slider.minimumValue = 0
         slider.maximumValue = 100
@@ -55,6 +58,7 @@ final class SearchLocationsVC: UIViewController {
         self.view.addSubview(searchButton)
         
         slider.addTarget(self, action: #selector(sliderChangedValue(_:)), for: .valueChanged)
+        searchButton.addTarget(self, action: #selector(searchAirpotsButtonPressed), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             titleText.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0),
@@ -81,6 +85,12 @@ final class SearchLocationsVC: UIViewController {
     @objc private func sliderChangedValue(_ sender: UISlider) {
         DispatchQueue.main.async {
             self.kmRadiusText.text = "\(String(Int(sender.value)))km"
+        }
+    }
+    
+    @objc private func searchAirpotsButtonPressed() {
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(MapVC(), animated: true)
         }
     }
     
