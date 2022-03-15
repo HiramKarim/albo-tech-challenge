@@ -8,7 +8,6 @@
 import Foundation
 
 struct Constants {
-    static let baseUrl = "https://api.stackexchange.com/2.2/"
-    static let topQuestionsListAPIURL = "questions?site=stackoverflow&order=desc&sort=votes&tagged=swiftui&pagesize=10"
-    static let questionDetailAPIURL = "questions/<questionID>?site=stackoverflow&order=desc&sort=votes&tagged=swiftui&pagesize=10&filter=!9_bDDxJY5"
+    static let baseUrl = "https://aerodatabox.p.rapidapi.com/airports/search/location/"
+    static let airportLocationAPIURL = "<lat>/<long>/km/<km>/16?withFlightInfoOnly=0"
 }

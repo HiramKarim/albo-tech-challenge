@@ -60,6 +60,8 @@ final class SearchLocationsVC: UIViewController {
         slider.addTarget(self, action: #selector(sliderChangedValue(_:)), for: .valueChanged)
         searchButton.addTarget(self, action: #selector(searchAirpotsButtonPressed), for: .touchUpInside)
         
+        validateSearchButtonStatus(withSelectedKm: 0)
+        
         NSLayoutConstraint.activate([
             titleText.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0),
             titleText.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -85,12 +87,23 @@ final class SearchLocationsVC: UIViewController {
     @objc private func sliderChangedValue(_ sender: UISlider) {
         DispatchQueue.main.async {
             self.kmRadiusText.text = "\(String(Int(sender.value)))km"
+            self.validateSearchButtonStatus(withSelectedKm: Int(sender.value))
         }
     }
     
     @objc private func searchAirpotsButtonPressed() {
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(MapVC(), animated: true)
+        }
+    }
+    
+    private func validateSearchButtonStatus(withSelectedKm km:Int) {
+        if km > 0 {
+            searchButton.alpha = 1
+            searchButton.isEnabled = true
+        } else {
+            searchButton.alpha = 0.5
+            searchButton.isEnabled = false
         }
     }
     
