@@ -8,17 +8,25 @@
 import Foundation
 
 protocol input {
-    func searchLocation(km:Int)
+    func setKmSearchLocation(km:Int)
 }
 
 protocol output {
-    
+    func getKmSearchLocation() -> Int
 }
 
 protocol SearchLocationResponser: input, output { }
 
-class SearchLocationVM {
+class SearchLocationVM: SearchLocationResponser {
     
+    private var kmRadius:Int = 0
     
+    func setKmSearchLocation(km: Int) {
+        self.kmRadius = km
+    }
+    
+    func getKmSearchLocation() -> Int {
+        return self.kmRadius
+    }
     
 }

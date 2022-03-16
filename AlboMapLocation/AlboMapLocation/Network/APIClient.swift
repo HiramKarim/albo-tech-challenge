@@ -23,9 +23,19 @@ extension APIClient {
         let newURL = "\(endpoint.baseURL)\(newPath)"
         var urlRequest = URLRequest(url: URL(string: newURL)!)
         urlRequest.httpMethod = endpoint.method.rawValue
-        endpoint.headers?.forEach {
-            urlRequest.setValue($0.key, forHTTPHeaderField: $0.value)
-        }
+        
+        let headers = [
+            "X-RapidAPI-Host": "aerodatabox.p.rapidapi.com",
+            "X-RapidAPI-Key": "f8bb5a0214msh006212a656a2a46p1be610jsn0c00cff063e9"
+        ]
+
+        urlRequest.allHTTPHeaderFields = headers
+        
+        
+//        endpoint.headers?.forEach {
+//            urlRequest.setValue($0.key, forHTTPHeaderField: $0.value)
+//        }
+        
         
         return URLSession.shared.dataTaskPublisher(for: urlRequest)
             .map(\.data)

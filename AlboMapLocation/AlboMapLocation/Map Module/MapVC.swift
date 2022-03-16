@@ -11,7 +11,9 @@ import MapKit
 final class MapVC: UIViewController {
     
     private let locationManager = CLLocationManager()
-    private let rangeInMeters: Double = 10000
+    private let rangeInMeters: Double = 60000
+    
+    private var viewModel:MapViewModelResponser?
     
     private let mapView: MKMapView = {
         let map = MKMapView(frame: .zero)
@@ -35,6 +37,16 @@ final class MapVC: UIViewController {
             mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
             mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
         ])
+    }
+    
+    convenience init(viewModel:MapViewModelResponser) {
+        self.init()
+        self.viewModel = viewModel
+        self.viewModel?.loadAirportsOnMapCallback = loadAirportsCallback
+    }
+    
+    func loadAirportsCallback(airportLocations:[LocationCoordinate]) {
+        mapView.addAnnotations(airportLocations)
     }
     
 }
@@ -74,10 +86,17 @@ private extension MapVC {
     private func centerViewOnUser() {
         guard let location = locationManager.location?.coordinate else { return }
         
+        self.viewModel?.setLatitude(latitude: location.latitude)
+        self.viewModel?.setLongitude(longitude: location.longitude)
+        
         let coordinateRegion = MKCoordinateRegion.init(center: location,
                                                        latitudinalMeters: rangeInMeters,
                                                        longitudinalMeters: rangeInMeters)
-        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.setCameraBoundary(MKMapView.CameraBoundary(coordinateRegion: coordinateRegion), animated: true)
+        //mapView.setRegion(coordinateRegion, animated: true)
+        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 200000)
+        mapView.setCameraZoomRange(zoomRange, animated: true)
+        self.viewModel?.loadAirports()
     }
 }
 
@@ -92,6 +111,10 @@ extension MapVC: CLLocationManagerDelegate {
         let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate,
                                                        latitudinalMeters: rangeInMeters,
                                                        longitudinalMeters: rangeInMeters)
-        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.setCameraBoundary(MKMapView.CameraBoundary(coordinateRegion: coordinateRegion), animated: true)
+        //mapView.setRegion(coordinateRegion, animated: true)
+        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 200000)
+        mapView.isScrollEnabled = true
+        mapView.setCameraZoomRange(zoomRange, animated: true)
     }
 }

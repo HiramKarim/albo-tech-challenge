@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct LocationModel: Decodable {
     let items:[LocationData]
@@ -17,7 +18,7 @@ struct LocationData:Decodable {
     let name:String?
     let shortName:String?
     let municipalityName:String?
-    let location:[LocationCoordinatesData]?
+    let location:LocationCoordinatesData?
     let countryCode:String?
 }
 
