@@ -20,6 +20,7 @@ protocol MapViewModelOutput {
     var loadAirportsOnMapCallback:((_ airportLocations:[LocationCoordinate])->Void)? { get set }
     func loadAirports()
     func getKmRadius() -> Int
+    func getAirportsLocations() -> [LocationData]
 }
 
 protocol MapViewModelResponser: MapViewModelInput, MapViewModelOutput { }
@@ -57,6 +58,10 @@ class MapViewModel: MapViewModelResponser {
         return self.kmInRange
     }
     
+    func getAirportsLocations() -> [LocationData] {
+        return airportLocations ?? []
+    }
+    
     private func createMapAnnotations() {
         var mapAnnotations = [LocationCoordinate]()
         
@@ -84,6 +89,7 @@ class MapViewModel: MapViewModelResponser {
                 }
             } receiveValue: { [weak self] result in
                 guard let self = self else { return }
+                Helper.shared.airportsLocations = result.items
                 self.airportLocations = result.items
                 self.createMapAnnotations()
             }
