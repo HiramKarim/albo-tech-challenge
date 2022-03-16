@@ -11,7 +11,7 @@ import CoreLocation
 final class SearchLocationsVC: UIViewController {
     
     private let locationManager = CLLocationManager()
-    private var viewModel: SearchLocationResponser?
+    private var viewModel: SearchLocationVM?
     
     private let titleText: UILabel = {
         return UILabel.makeLabel(for: .title, withText: "AIRPORT", withTextColor: .white, andTextsize: 50)
@@ -49,8 +49,9 @@ final class SearchLocationsVC: UIViewController {
         configView()
     }
     
-    func makeViewModel(viewModel: SearchLocationResponser = SearchLocationVM()) {
-        self.viewModel = viewModel
+    func makeViewModel(withCoordinator coordinator: AppCoordinator) {
+        self.viewModel = SearchLocationVM()
+        self.viewModel?.coordinator = coordinator
     }
     
     private func configView() {
@@ -97,17 +98,8 @@ final class SearchLocationsVC: UIViewController {
     }
     
     @objc private func searchAirpotsButtonPressed() {
-        
-        print(">>> slider value \(self.slider.value)")
         viewModel?.setKmSearchLocation(km: Int(self.slider.value))
-        print(">>> vm value \(viewModel?.getKmSearchLocation() ?? 0)")
-        
-        DispatchQueue.main.async {
-            let viewmodel = MapViewModel()
-            viewmodel.setKmInRange(km: self.viewModel?.getKmSearchLocation() ?? 0)
-            let mapController = MapVC(viewModel: viewmodel)
-            self.navigationController?.pushViewController(mapController, animated: true)
-        }
+        viewModel?.goToTabSection()
     }
     
     private func validateSearchButtonStatus(withSelectedKm km:Int) {

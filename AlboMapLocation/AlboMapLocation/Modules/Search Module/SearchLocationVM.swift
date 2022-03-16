@@ -19,6 +19,8 @@ protocol SearchLocationResponser: input, output { }
 
 class SearchLocationVM: SearchLocationResponser {
     
+    weak var coordinator: AppCoordinator!
+    
     private var kmRadius:Int = 0
     
     func setKmSearchLocation(km: Int) {
@@ -27,6 +29,10 @@ class SearchLocationVM: SearchLocationResponser {
     
     func getKmSearchLocation() -> Int {
         return self.kmRadius
+    }
+    
+    func goToTabSection() {
+        coordinator.goToTabController(withKmRadius: kmRadius)
     }
     
 }
